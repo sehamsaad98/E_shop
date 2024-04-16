@@ -15,21 +15,20 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('desc');
-            $table->string('address');
-            $table->string('whatsapp');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('logo');
-            $table->string('favicon');
-            $table->string('facebook');
-            $table->string('twitter');
-            $table->string('instgram');
-            $table->string('youtube');
-            $table->string('tiktok');
+            $table->string('name')->nullable();
+            $table->string('desc')->nullable();
+            $table->string('address')->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('favicon')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instgram')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('tiktok')->nullable();
             $table->softDeletes();
-
             $table->timestamps();
         });
     }

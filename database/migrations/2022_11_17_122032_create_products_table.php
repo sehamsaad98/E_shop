@@ -17,11 +17,14 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->longText('desc');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->decimal('price', 8, 2)->nullable();
             $table->decimal('discount_price', 8, 2)->nullable();
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->integer('brand_id')->unsigned();
+            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->integer('quantity');
             $table->timestamps();
             $table->softDeletes();
         });

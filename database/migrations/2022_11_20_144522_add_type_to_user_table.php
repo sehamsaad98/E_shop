@@ -15,7 +15,10 @@ class AddTypeToUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             // $table->string('type')->default('user');
-            $table->enum('type', ['user', 'admin'])->default('user');
+            $table->enum('type', ['user', 'admin','trader'])->default('user');
+            //make tabel type user or admin or trader default user
+
+
         });
     }
 
@@ -26,7 +29,7 @@ class AddTypeToUserTable extends Migration
      */
     public function down()
     {
-        Schema::table('user', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('type');
         });
     }

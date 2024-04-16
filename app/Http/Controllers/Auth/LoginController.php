@@ -38,15 +38,26 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-
     // public function redirectTo()
     // {
-    //     if (auth()->user()->type == 'admin') {
-    //         // go to admin dashbpa
-    //         dd('admin');
-    //     } else {
-    //         // dd('user');
-    //         return "sdddddd";
-    //     }
+    //     if (auth()->user()->type == 'admin') {  
+    //         return route('index');
+    //     // return '/dashboard/index';
+
+    //    }else{
+    //     // redirect to /index route
+    //     return route('home');
+    //         }
     // }
+    public function redirectTo()
+    {
+      if (auth()->user()->type == 'admin') {
+        return '/dashboard/index';  
+    } elseif (auth()->user()->type == 'trader') {
+        return '/trader/index'; 
+    }
+    return '/home';  
+        
+    }
+
 }

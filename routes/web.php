@@ -14,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+    
+// })->name('index');
 Route::get('/', function () {
-    return 'wellcom';
+  return 'user';
 });
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/index', [IndexController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\Site\CategoryController::class, 'index'])->name('home');
+Route::get('/cart', [App\Http\Controllers\Site\CartController::class, 'index'])->name('cart');
+
+Route::get('/favorite', [App\Http\Controllers\Site\FavoriteController::class, 'index'])->name('favorite');
