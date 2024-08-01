@@ -83,8 +83,12 @@
                                                 التخفيض الأساسي للمنتج </label>
                                             <input class="form-control" id="validationCustom02" type="text" name="discount_price">
                                         </div>
+                                          
 
-   
+                                        <div class="form-group">
+                                        <label for="quantity"  class="col-form-label">Quantity (between 1 and 5):</label>
+                                        <input type="number" id="quantity" class="form-control" name="quantity" min="1" max="100"> 
+                                        </div>
                                         <div class="form-group">
                                             <button class="btn btn-primary" type="submit">حفظ</button>
                                             </div>

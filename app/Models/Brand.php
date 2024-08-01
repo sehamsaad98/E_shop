@@ -11,8 +11,11 @@ class Brand extends Model
   use HasFactory , SoftDeletes;
   protected $fillable = ['name', 'image', 'user_id', 'status'];
   protected $table = 'brands';
-  public function product()
-  {
-      return $this->hasMany(Product::class, 'brand_id');
-  }
+  public function trader() {
+    return $this->belongsTo(User::class, 'trader_id');
+}
+
+public function products() {
+    return $this->hasMany(Product::class);
+}
 }

@@ -169,6 +169,7 @@ ul {
 }
 .header_filter {
     width: 25%;
+    margin-right: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

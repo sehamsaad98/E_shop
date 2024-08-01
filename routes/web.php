@@ -17,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
     
 // })->name('index');
-Route::get('/', function () {
-  return 'user';
-});
+Route::get('/', [App\Http\Controllers\Site\CategoryController::class, 'index']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\Site\CategoryController::class, 'index'])->name('home');

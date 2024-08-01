@@ -22,8 +22,6 @@ class CreateProductsTable extends Migration
             $table->decimal('discount_price', 8, 2)->nullable();
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->integer('brand_id')->unsigned();
-            $table->foreign('brand_id')->references('id')->on('brands');
             $table->integer('quantity');
             $table->timestamps();
             $table->softDeletes();

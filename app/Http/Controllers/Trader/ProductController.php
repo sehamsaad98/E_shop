@@ -14,6 +14,7 @@ use App\Services\CategorySrevice;
 use App\Services\ColorService;
 use Illuminate\Http\Request;
 use App\Services\ProductService;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -74,12 +75,40 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-         $this->productService->store($request->validated());
-        return redirect()->route('trader.products.index');
+        $user = Auth::user(); // Ensure the user is authenticated
     
+        // Check if the user is a trader
+        if ($user->type !== 'trader') {
+            return response()->json([
+                'error' => 'Unauthorized',
+                'user_type_provided' => $user->type, // Show the type received
+                'message' => 'You must be a trader to perform this action.'
+            ], 403);
+        }
     
+        // Retrieve the trader's brand
+        $brand = $user->brand()->first(); // Retrieve the first related brand record
+    
+        if (!$brand) {
+            return response()->json(['error' => 'No brand associated with this trader'], 404);
+        }
+    
+        // Create a new product linked to the brand
+        $product = new Product([
+            'name' => $request->name,
+            'desc' => $request->desc,
+            'price' => $request->price,
+            'image' => $request->image,
+            'category_id' => $request->category_id,
+            'discount_price' => $request->discount_price,
+            'brand_id' => $brand->id // Setting the brand ID
+        ]);
+    
+        // Save the product to the database under the brand
+        $product->save(); // Save the product directly, as $product has all the necessary data
+    
+        return response()->json(['message' => 'Product added successfully'], 200);
     }
-
 
     public function show($id)
     {

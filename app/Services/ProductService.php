@@ -32,14 +32,14 @@ class ProductService
 
         $product = $this->productRepository->store($params);
 
-        if (isset($params['colors'])) {
-            $params['colors'] = array_map(function($color) use ($product) {
-                $colors['color'] = $color;
-                $colors['product_id'] = $product->id;
-                return $colors;
-            }, $params['colors']);
-            $this->productRepository->addColor($product, ['colors' => $params['colors']]);
-        }
+        // if (isset($params['colors'])) {
+        //     $params['colors'] = array_map(function($color) use ($product) {
+        //         $colors['color'] = $color;
+        //         $colors['product_id'] = $product->id;
+        //         return $colors;
+        //     }, $params['colors']);
+        //     $this->productRepository->addColor($product, ['colors' => $params['colors']]);
+        // }
 
         return $product;
     }
@@ -60,11 +60,11 @@ class ProductService
 
     public function datatable()
     {
-        $query = $this->productRepository->baseQuery(relations:['category'] );
+        $query = $this->productRepository->baseQuery(relations:['category'],withCount:['productColor'] );
         return DataTables::of($query)
             ->addColumn('action', function ($row) {
                 return $btn = '
-                <a href="' . Route('trader.products.edit', $row->id) . '"  class="edit btn btn-success btn-sm" ><i class="fa fa-edit"></i></a>
+                <a href="' . Route('dashboard.products.edit', $row->id) . '"  class="edit btn btn-success btn-sm" ><i class="fa fa-edit"></i></a>
 
                 <button type="button" id="deleteBtn"  data-id="' . $row->id . '" class="btn btn-danger mt-md-0 mt-2" data-bs-toggle="modal"
                 data-original-title="test" data-bs-target="#deletemodal"><i class="fa fa-trash"></i></button>';

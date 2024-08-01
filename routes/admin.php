@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/index', [IndexController::class , 'index'])->middleware('checkAdmin')->name('index');
+// Route::get('/index', [IndexController::class , 'index'])->middleware('checkAdmin')->name('index');
 
 Route::group([ 'middleware' => 'checkAdmin','as' => 'dashboard.'] , function(){
+    Route::get('/index', [IndexController::class , 'index'])->name('index');
     Route::put('/users/{setting}/update',[SettingController::class , 'update'])->name('settings.update');
     Route::get('/settings',[SettingController::class , 'index'])->name('settings.index');    
     Route::get('/categories/ajax',[CategoryController::class , 'getall'])->name('categories.getall');    

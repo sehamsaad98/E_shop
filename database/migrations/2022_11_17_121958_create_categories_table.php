@@ -17,9 +17,10 @@ class CreateCategoriesTable extends Migration
             
             $table->increments('id');
             $table->string('name');
-            $table->integer('parent_id')->nullable();
             $table->softDeletes();
             $table->string('image');
+            $table->integer('parent_id')->nullable(false)->default(0);
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

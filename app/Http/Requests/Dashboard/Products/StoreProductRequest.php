@@ -29,11 +29,13 @@ class StoreProductRequest extends FormRequest
             'price' => 'nullable|numeric',
             'category_id' => 'required|numeric|exists:categories,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'quantity' => 'nullable|numeric',
             'discount_price'=>'nullable|numeric',
-            'colors'=>'nullable|array',
-            'colors.*'=>'nullable|string',
-            'sizes'=>'nullable|array',
-            'sizes.*'=>'nullable|string',
+            // 'colors'=>'nullable|array',
+            // 'colors.*'=>'nullable|string',
+            // 'sizes'=>'nullable|array',
+            // 'sizes.*'=>'nullable|string',
+
         ];
     }
 }

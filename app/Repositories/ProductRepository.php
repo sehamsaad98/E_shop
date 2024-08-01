@@ -9,6 +9,7 @@ class ProductRepository  implements RepositoryInterface
 {
     public $product;
     public $color;
+    
     public function __construct(Product $product , Color $color)
     {
 
@@ -17,12 +18,12 @@ class ProductRepository  implements RepositoryInterface
 
     }
 
-    public function baseQuery($relations=[])
+    public function baseQuery($relations=[],$withCount=[])
     {
         $query = $this->product->select('*')->with($relations);
-        // foreach ($withCount as $key => $value) {
-        //    $query->withCount($value);
-        // }
+        foreach ($withCount as $key => $value) {
+           $query->withCount($value);
+        }
        return $query;
     }
 
@@ -62,6 +63,7 @@ class ProductRepository  implements RepositoryInterface
         $query = $this->color->newQuery()->select(['colors.*']);
        return $query;
     }
+
 
 
 }

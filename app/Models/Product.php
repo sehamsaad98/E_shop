@@ -9,15 +9,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use HasFactory , SoftDeletes;
-    protected $fillable = ['name', 'desc', 'image', 'price', 'discount_price', 'category_id'];
+    protected $fillable = ['name', 'desc', 'image', 'price', 'discount_price', 'category_id', 'quantity'];
     protected $table = 'products';
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
-    public function brand()
-    {
-        return $this->belongsTo(Brand::class, 'brand_id');
+    public function brand() {
+        return $this->belongsTo(Brand::class);
     }
     public function colors()
     {

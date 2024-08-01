@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="page-header-left">
-                            <h3> المنتجات
+                            <h3> Products
                             </h3>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
 
                             </form>
 
-                            <a class="btn btn-primary mt-md-0 mt-2" href="{{route('dashboard.products.create')}}">إضافة منتج جديد</a>
+                            <a class="btn btn-primary mt-md-0 mt-2" href="{{route('dashboard.products.create')}}">Add New Product</a>
 
 
 
@@ -51,12 +51,12 @@
                                 <table class="table all-package table-category " id="editableTable">
                                     <thead>
                                         <tr>
-                                            <th>الإسم</th>
-                                            <th>القسم </th>
-                                            <th>السعر الأساسي</th>
-                                            <th>التخفيض الأساسي</th>
-                                            <th>الصورة</th>
-                                            ZX <th></th>
+                                            <th>Name </th>
+                                            <th>Category </th>
+                                            <th> Main Price </th>
+                                            <th>Discount Price </th>
+                                            <th>Image </th>
+                                             <th></th>
 
 
                                         </tr>
